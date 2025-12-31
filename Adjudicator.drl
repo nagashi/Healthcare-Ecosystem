@@ -1,0 +1,17 @@
+rule "Mark for Manual Review if total exceeds $5000"
+    when
+        $c : Claim( totalAmount > 5000, status == "PENDING" )
+    then
+        $c.setStatus("MANUAL_REVIEW");
+        $c.addFlag("HIGH_VALUE_CLAIM");
+        update($c);
+end
+
+rule "Deny if Provider is Out of Network"
+    when
+        $c : Claim( networkStatus == "OUT_OF_NETWORK", planType == "HMO" )
+    then
+        $c.setStatus("DENIED");
+        $c.setDenialReason("OON_NOT_COVERED_ON_HMO");
+        update($c);
+end
