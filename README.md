@@ -48,7 +48,7 @@ C4Context
     Rel(claims_service, bank, "Triggers Payment", "ISO 20022")
 ```
 
-Key Components Explained\
+Key Components Explained
 -  API Gateway: Essential for healthcare to handle HIPAA-compliant encryption and various<br> entry points (Electronic Data Interchange or REST APIs).
 
 -  Adjudication Rules Engine: The "brain" of the engine. It checks if the member is active, if<br> the service is covered, and calculates the co-pay or deductible.
